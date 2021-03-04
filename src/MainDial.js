@@ -38,17 +38,20 @@ export default function MainDial() {
 
     return (
         <styled.MainDial>
-            <styled.HandH time={time} />
-            <styled.HandM time={time} />
-            <styled.HandS time={time} />
             <styled.SubDialA>
                 <styled.HandHs time={timeA} />
                 <styled.HandMs time={timeA} />
+                <styled.CapSmall />
             </styled.SubDialA>
             <styled.SubDialB>
                 <styled.HandHs time={timeB} />
                 <styled.HandMs time={timeB} />
+                <styled.CapSmall />
             </styled.SubDialB>
+            <styled.HandH time={time} />
+            <styled.HandM time={time} />
+            <styled.HandS time={time} />
+            <styled.Cap />
         </styled.MainDial>
     );
 }
