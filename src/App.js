@@ -1,3 +1,10 @@
+import * as styled from './App.styled';
+import MainDial from './MainDial';
+
 export default function App() {
-    return <div>app</div>;
+    return (
+        <styled.App>
+            <MainDial />
+        </styled.App>
+    );
 }
