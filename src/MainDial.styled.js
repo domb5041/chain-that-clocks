@@ -56,30 +56,20 @@ export const CapSmall = styled(Cap)`
 export const HandH = styled(Hand)`
     width: 15px;
     height: 160px;
-    transform: ${props => `translateX(-50%) rotate(${props.time[0]}deg)`};
 `;
 
 export const HandM = styled(Hand)`
     width: 10px;
     height: 220px;
-    transform: ${props => `translateX(-50%) rotate(${props.time[1]}deg)`};
 `;
 
 export const HandS = styled(Hand)`
     width: 5px;
     height: 240px;
-    transform: ${props => `translateX(-50%) rotate(${props.time[2]}deg)`};
     background-color: red;
 `;
 
 export const HandHs = styled(Hand)`
     width: 6px;
     height: 60px;
-    transform: ${props => `translateX(-50%) rotate(${props.time[0]}deg)`};
-`;
-
-export const HandMs = styled(Hand)`
-    width: 6px;
-    height: 90px;
-    transform: ${props => `translateX(-50%) rotate(${props.time[1]}deg)`};
 `;

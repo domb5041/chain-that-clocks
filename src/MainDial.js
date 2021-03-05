@@ -2,55 +2,51 @@ import React, { useState, useEffect } from 'react';
 import * as styled from './MainDial.styled';
 
 export default function MainDial() {
-    const [time, setTime] = useState([0, 0, 0]);
-    const [timeA, setTimeA] = useState([0, 0, 0]);
-    const [timeB, setTimeB] = useState([0, 0, 0]);
+    const [london, setLondon] = useState([0, 0, 0]);
+    const [paris, setParis] = useState([0, 0, 0]);
+    const [tokyo, setTokyo] = useState([0, 0, 0]);
 
     useEffect(() => {
-        setInterval(updateClock, 1000);
-        setInterval(updateClockA, 1000);
-        setInterval(updateClockB, 1000);
+        setInterval(() => setLondon(updateHands(0)), 1000);
+        setInterval(() => setParis(updateHands(1)), 1000);
+        setInterval(() => setTokyo(updateHands(9)), 1000);
     }, []);
 
-    const updateClock = () => {
+    const updateHands = timezone => {
         const d = new Date();
-        const h = d.getHours() * 30;
-        const m = d.getMinutes() * 6;
-        const s = d.getSeconds() * 6;
-        setTime([h, m, s]);
+
+        const mSecUTC = d.getTime() + d.getTimezoneOffset() * 60000;
+        const newTime = mSecUTC + timezone * 3600000;
+        const dAdjusted = new Date(newTime);
+        const hoursInDegrees =
+            (dAdjusted.getHours() * 3600 +
+                dAdjusted.getMinutes() * 60 +
+                dAdjusted.getSeconds()) *
+            0.00833333;
+        const minutesInDegrees =
+            (dAdjusted.getMinutes() * 60 + dAdjusted.getSeconds()) * 0.1;
+        const secondsInDegrees = dAdjusted.getSeconds() * 6;
+
+        return [hoursInDegrees, minutesInDegrees, secondsInDegrees];
     };
 
-    const updateClockA = () => {
-        const d = new Date();
-        const h = d.getHours() * 30;
-        const m = d.getMinutes() * 6;
-        const s = d.getSeconds() * 6;
-        setTimeA([h, m, s]);
-    };
-
-    const updateClockB = () => {
-        const d = new Date();
-        const h = d.getHours() * 30;
-        const m = d.getMinutes() * 6;
-        const s = d.getSeconds() * 6;
-        setTimeB([h, m, s]);
-    };
+    const transformHands = hand => ({
+        transform: `translateX(-50%) rotate(${hand}deg)`,
+    });
 
     return (
         <styled.MainDial>
             <styled.SubDialA>
-                <styled.HandHs time={timeA} />
-                <styled.HandMs time={timeA} />
+                <styled.HandHs style={transformHands(paris[0])} />
                 <styled.CapSmall />
             </styled.SubDialA>
             <styled.SubDialB>
-                <styled.HandHs time={timeB} />
-                <styled.HandMs time={timeB} />
+                <styled.HandHs style={transformHands(tokyo[0])} />
                 <styled.CapSmall />
             </styled.SubDialB>
-            <styled.HandH time={time} />
-            <styled.HandM time={time} />
-            <styled.HandS time={time} />
+            <styled.HandH style={transformHands(london[0])} />
+            <styled.HandM style={transformHands(london[1])} />
+            <styled.HandS style={transformHands(london[2])} />
             <styled.Cap />
         </styled.MainDial>
     );
