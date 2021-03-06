@@ -43,41 +43,36 @@ export default function MainDial() {
 
     return (
         <styled.MainDial>
-            {tickData.main.hours.map(deg => (
-                <styled.MainDialTick deg={deg}>
+            {tickData.main.map(tick => (
+                <styled.Tick tick={tick}>
                     <div />
-                </styled.MainDialTick>
-            ))}
-            {tickData.main.minutes.map(deg => (
-                <styled.MainDialMinTick deg={deg}>
-                    <div />
-                </styled.MainDialMinTick>
+                </styled.Tick>
             ))}
             <styled.SubDialA>
-                {tickData.sub.hours.map(deg => (
-                    <styled.SubDialTick deg={deg}>
+                {tickData.sub.map(tick => (
+                    <styled.Tick tick={tick}>
                         <div />
-                    </styled.SubDialTick>
+                    </styled.Tick>
                 ))}
                 <styled.HandHs style={transformHands(paris[0])} />
                 <styled.HandMs style={transformHands(paris[1])} />
                 <styled.CapSmall />
             </styled.SubDialA>
             <styled.SubDialB>
-                {tickData.sub.hours.map(deg => (
-                    <styled.SubDialTick deg={deg}>
+                {tickData.sub.map(tick => (
+                    <styled.Tick tick={tick}>
                         <div />
-                    </styled.SubDialTick>
+                    </styled.Tick>
                 ))}
                 <styled.HandHs style={transformHands(tokyo[0])} />
                 <styled.HandMs style={transformHands(tokyo[1])} />
                 <styled.CapSmall />
             </styled.SubDialB>
             <styled.SubDialC>
-                {tickData.sub.hours.map(deg => (
-                    <styled.SubDialTick deg={deg}>
+                {tickData.sub.map(tick => (
+                    <styled.Tick tick={tick}>
                         <div />
-                    </styled.SubDialTick>
+                    </styled.Tick>
                 ))}
                 <styled.HandHs style={transformHands(newDelhi[0])} />
                 <styled.HandMs style={transformHands(newDelhi[1])} />

@@ -87,47 +87,26 @@ export const HandMs = styled(Hand)`
     height: 60px;
 `;
 
-export const SubDialTick = styled.div`
-    position: absolute;
-    bottom: 50%;
-    left: 50%;
-    transform-origin: center bottom;
-    width: 5px;
-    height: 90px;
-    transform: ${props => `translateX(-50%) rotate(${props.deg}deg)`};
-    & > div {
-        background-color: silver;
-        width: 100%;
-        height: 20%;
-    }
-`;
+const tickDimensions = {
+    hrLong: { width: '10px', height: '30%' },
+    hrShort: { width: '10px', height: '4%' },
+    hr: { width: '7px', height: '15%' },
+    min: { width: '4px', height: '4%' },
+    sub: { width: '5px', height: '15%' },
+    subLong: { width: '5px', height: '30%' },
+};
 
-export const MainDialTick = styled.div`
+export const Tick = styled.div`
     position: absolute;
     bottom: 50%;
     left: 50%;
     transform-origin: center bottom;
-    width: 7px;
-    height: 250px;
-    transform: ${props => `translateX(-50%) rotate(${props.deg}deg)`};
+    width: ${props => tickDimensions[props.tick.type].width};
+    height: 50%;
+    transform: ${props => `translateX(-50%) rotate(${props.tick.deg}deg)`};
     & > div {
         background-color: silver;
         width: 100%;
-        height: 15%;
-    }
-`;
-
-export const MainDialMinTick = styled.div`
-    position: absolute;
-    bottom: 50%;
-    left: 50%;
-    transform-origin: center bottom;
-    width: 4px;
-    height: 250px;
-    transform: ${props => `translateX(-50%) rotate(${props.deg}deg)`};
-    & > div {
-        background-color: silver;
-        width: 100%;
-        height: 4%;
+        height: ${props => tickDimensions[props.tick.type].height};
     }
 `;
