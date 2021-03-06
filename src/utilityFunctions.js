@@ -22,3 +22,8 @@ export const updateHands = offset => {
 export const transformHands = hand => ({
     transform: `translateX(-50%) rotate(${hand}deg)`,
 });
+
+export const getAmPm = offset => {
+    const d = adjustForTimezone(offset);
+    return d.getHours() < 12 ? 'AM' : 'PM';
+};

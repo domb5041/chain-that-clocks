@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import * as styled from './Dials.styled';
 import tickData from './tickData';
-import { transformHands, updateHands } from './utilityFunctions';
+import { transformHands, updateHands, getAmPm } from './utilityFunctions';
 
 export default function SubDial({ position, city, offset }) {
     const [time, setTime] = useState([0, 0, 0]);
@@ -12,6 +12,7 @@ export default function SubDial({ position, city, offset }) {
 
     return (
         <styled.SubDial position={position}>
+            <styled.AmPm subDial>{getAmPm(offset)}</styled.AmPm>
             <styled.City>{city}</styled.City>
             {tickData.sub.map(tick => (
                 <styled.Tick tick={tick}>

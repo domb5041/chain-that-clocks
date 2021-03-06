@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import * as styled from './Dials.styled';
 import tickData from './tickData';
 import SubDial from './SubDial';
-import { transformHands, updateHands } from './utilityFunctions';
+import { transformHands, updateHands, getAmPm } from './utilityFunctions';
 
 export default function MainDial() {
     const [time, setTime] = useState([0, 0, 0]);
@@ -13,6 +13,7 @@ export default function MainDial() {
 
     return (
         <styled.MainDial>
+            <styled.AmPm>{getAmPm(0)}</styled.AmPm>
             {tickData.main.map(tick => (
                 <styled.Tick tick={tick}>
                     <div />

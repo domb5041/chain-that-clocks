@@ -39,10 +39,20 @@ export const City = styled.div`
     color: silver;
     text-transform: uppercase;
     position: absolute;
-    bottom: 35px;
+    bottom: 40px;
     width: 100%;
     text-align: center;
     font-size: 12px;
+`;
+
+export const AmPm = styled.div`
+    color: silver;
+    text-transform: uppercase;
+    position: absolute;
+    top: ${props => (props.subDial ? 40 : 90)}px;
+    width: 100%;
+    text-align: center;
+    font-size: ${props => (props.subDial ? 12 : 20)}px;
 `;
 
 export const Hand = styled.div`
