@@ -15,6 +15,7 @@ export const SubDial = styled.div`
     border-radius: 100%;
     border: 2px solid silver;
     position: absolute;
+    background-color: rgba(255, 255, 255, 0.05);
     ${props =>
         (props.position === 'left' &&
             css`
