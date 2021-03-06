@@ -60,7 +60,7 @@ export const AmPm = styled.div`
 
 export const Hand = styled.div`
     position: absolute;
-    background-color: white;
+    background-color: ${props => props.color || 'white'};
     bottom: 50%;
     left: 50%;
     transform-origin: center bottom;

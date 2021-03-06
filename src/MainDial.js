@@ -23,8 +23,12 @@ export default function MainDial() {
             <SubDial position='right' city='tokyo' offset={9} />
             <SubDial position='bottom' city='new delhi' offset={5.5} />
             <styled.Hand size={[15, 160]} style={transformHands(time[0])} />
-            <styled.Hand size={[10, 220]} style={transformHands(time[1])} />
-            <styled.Hand size={[5, 240]} style={transformHands(time[2])} />
+            <styled.Hand size={[10, 230]} style={transformHands(time[1])} />
+            <styled.Hand
+                size={[5, 240]}
+                style={transformHands(time[2])}
+                color='red'
+            />
             <styled.Cap size={20} />
         </styled.MainDial>
     );
