@@ -5,7 +5,7 @@ const adjustForTimezone = offset => {
     return new Date(newTime);
 };
 
-export const updateHands = offset => {
+export const timeToDegrees = offset => {
     const d = adjustForTimezone(offset);
 
     const hrsToSeconds = d.getHours() * 3600;
