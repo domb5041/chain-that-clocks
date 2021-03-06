@@ -12,22 +12,26 @@ export default function MainDial() {
         setInterval(() => setTokyo(updateHands(9)), 1000);
     }, []);
 
-    const updateHands = timezone => {
+    const adjustForTimezone = offset => {
         const d = new Date();
-
         const mSecUTC = d.getTime() + d.getTimezoneOffset() * 60000;
-        const newTime = mSecUTC + timezone * 3600000;
-        const dAdjusted = new Date(newTime);
-        const hoursInDegrees =
-            (dAdjusted.getHours() * 3600 +
-                dAdjusted.getMinutes() * 60 +
-                dAdjusted.getSeconds()) *
-            0.00833333;
-        const minutesInDegrees =
-            (dAdjusted.getMinutes() * 60 + dAdjusted.getSeconds()) * 0.1;
-        const secondsInDegrees = dAdjusted.getSeconds() * 6;
+        const newTime = mSecUTC + offset * 3600000;
+        return new Date(newTime);
+    };
 
-        return [hoursInDegrees, minutesInDegrees, secondsInDegrees];
+    const updateHands = offset => {
+        const d = adjustForTimezone(offset);
+
+        const hrsToSeconds = d.getHours() * 3600;
+        const minsToSeconds = d.getMinutes() * 60;
+        const seconds = d.getSeconds();
+
+        const hrsToDeg =
+            (hrsToSeconds + minsToSeconds + seconds) * (360 / 43200);
+        const minsToDeg = (minsToSeconds + seconds) * (360 / 3600);
+        const secsToDeg = seconds * (360 / 60);
+
+        return [hrsToDeg, minsToDeg, secsToDeg];
     };
 
     const transformHands = hand => ({
