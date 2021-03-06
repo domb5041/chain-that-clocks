@@ -19,9 +19,9 @@ export default function SubDial({ position, city, offset }) {
                     <div />
                 </styled.Tick>
             ))}
-            <styled.Hand size={[6, 50]} style={transformHands(time[0])} />
-            <styled.Hand size={[6, 60]} style={transformHands(time[1])} />
-            <styled.Cap size={10} />
+            <styled.Hand size={[8, 45]} style={transformHands(time[0])} />
+            <styled.Hand size={[6, 70]} style={transformHands(time[1])} />
+            <styled.Cap size={12} />
         </styled.SubDial>
     );
 }

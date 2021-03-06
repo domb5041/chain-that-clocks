@@ -61,7 +61,6 @@ export const Hand = styled.div`
     bottom: 50%;
     left: 50%;
     transform-origin: center bottom;
-    border-radius: 50px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
     width: ${props => props.size[0]}px;
     height: ${props => props.size[1]}px;
