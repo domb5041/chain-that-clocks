@@ -6,6 +6,7 @@ export const MainDial = styled.div`
     border-radius: 100%;
     border: 4px solid silver;
     position: relative;
+    background-image: radial-gradient(transparent, rgba(255, 255, 255, 0.1));
 `;
 
 export const SubDial = styled.div`
@@ -43,6 +44,7 @@ export const City = styled.div`
     width: 100%;
     text-align: center;
     font-size: 12px;
+    letter-spacing: 2px;
 `;
 
 export const AmPm = styled.div`
@@ -53,6 +55,7 @@ export const AmPm = styled.div`
     width: 100%;
     text-align: center;
     font-size: ${props => (props.subDial ? 12 : 20)}px;
+    letter-spacing: 2px;
 `;
 
 export const Hand = styled.div`
