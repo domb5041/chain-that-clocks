@@ -6,7 +6,8 @@ export const MainDial = styled.div`
     border-radius: 100%;
     border: 4px solid silver;
     position: relative;
-    background-image: radial-gradient(transparent, rgba(255, 255, 255, 0.1));
+    background-image: radial-gradient(transparent, #343434);
+    box-shadow: 0 0 140px #343434;
 `;
 
 export const SubDial = styled.div`
@@ -15,7 +16,7 @@ export const SubDial = styled.div`
     border-radius: 100%;
     border: 2px solid silver;
     position: absolute;
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: #343434;
     ${props =>
         (props.position === 'left' &&
             css`
@@ -104,4 +105,34 @@ export const Tick = styled.div`
         width: 100%;
         height: ${props => tickDimensions[props.tick.type].height};
     }
+`;
+
+export const Bell = styled.i`
+    position: absolute;
+    font-size: 25px;
+    opacity: ${props => (props.alert ? 1 : 0.5)};
+    ${props =>
+        (props.position === 'left' &&
+            css`
+                left: -55px;
+                top: 50%;
+                transform: translateY(-50%);
+            `) ||
+        (props.position === 'right' &&
+            css`
+                right: -55px;
+                top: 50%;
+                transform: translateY(-50%);
+            `) ||
+        (props.position === 'bottom' &&
+            css`
+                bottom: -55px;
+                left: 50%;
+                transform: translateX(-50%);
+            `) ||
+        css`
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+        `}
 `;

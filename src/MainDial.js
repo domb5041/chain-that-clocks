@@ -2,24 +2,35 @@ import React, { useState, useEffect } from 'react';
 import * as styled from './Dials.styled';
 import { mainTickData } from './tickData';
 import SubDial from './SubDial';
-import { transformHands, timeToDegrees, getAmPm } from './utilityFunctions';
+import {
+    transformHands,
+    timeToDegrees,
+    getAmPm,
+    alertOnTheHour,
+} from './utilityFunctions';
 
 export default function MainDial() {
     const [time, setTime] = useState([0, 0, 0]);
+    const [alert, setAlert] = useState(false);
 
     useEffect(() => {
         setInterval(handleSetTime, 1000);
         return () => {
-            clearInterval(handleSetTime);
+            clearInterval(alertOnTheHour);
         };
     }, [time]);
 
     const handleSetTime = () => {
         setTime(timeToDegrees(0));
+        setAlert(alertOnTheHour(0));
     };
 
     return (
         <styled.MainDial>
+            <styled.Bell
+                className={alert ? 'fas fa-bell' : 'far fa-bell'}
+                alert={alert}
+            />
             <styled.AmPm>{getAmPm(0)}</styled.AmPm>
             {mainTickData.map((tick, i) => (
                 <styled.Tick tick={tick} key={i}>

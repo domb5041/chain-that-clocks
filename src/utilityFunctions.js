@@ -19,6 +19,13 @@ export const timeToDegrees = offset => {
     return [hrsToDeg, minsToDeg, secsToDeg];
 };
 
+export const alertOnTheHour = offset => {
+    const d = adjustForTimezone(offset);
+    if (d.getMinutes() === 0) {
+        return true;
+    }
+};
+
 export const transformHands = hand => ({
     transform: `translateX(-50%) rotate(${hand}deg)`,
 });
