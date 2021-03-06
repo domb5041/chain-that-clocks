@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const MainDial = styled.div`
     width: 500px;
@@ -14,27 +14,38 @@ export const SubDial = styled.div`
     border-radius: 100%;
     border: 2px solid silver;
     position: absolute;
+    ${props =>
+        (props.position === 'left' &&
+            css`
+                left: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+            `) ||
+        (props.position === 'right' &&
+            css`
+                right: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+            `) ||
+        (props.position === 'bottom' &&
+            css`
+                bottom: 15px;
+                left: 50%;
+                transform: translateX(-50%);
+            `)}
 `;
 
-export const SubDialA = styled(SubDial)`
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
+export const City = styled.div`
+    color: silver;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 35px;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
 `;
 
-export const SubDialB = styled(SubDial)`
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-`;
-
-export const SubDialC = styled(SubDial)`
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-`;
-
-const Hand = styled.div`
+export const Hand = styled.div`
     position: absolute;
     background-color: white;
     bottom: 50%;
@@ -42,6 +53,8 @@ const Hand = styled.div`
     transform-origin: center bottom;
     border-radius: 50px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+    width: ${props => props.size[0]}px;
+    height: ${props => props.size[1]}px;
 `;
 
 export const Cap = styled.div`
@@ -49,42 +62,11 @@ export const Cap = styled.div`
     background-color: white;
     top: 50%;
     left: 50%;
-    width: 20px;
-    height: 20px;
+    width: ${props => props.size}px;
+    height: ${props => props.size}px;
     transform: translate(-50%, -50%);
     border-radius: 100%;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
-`;
-
-export const CapSmall = styled(Cap)`
-    width: 10px;
-    height: 10px;
-`;
-
-export const HandH = styled(Hand)`
-    width: 15px;
-    height: 160px;
-`;
-
-export const HandM = styled(Hand)`
-    width: 10px;
-    height: 220px;
-`;
-
-export const HandS = styled(Hand)`
-    width: 5px;
-    height: 240px;
-    background-color: red;
-`;
-
-export const HandHs = styled(Hand)`
-    width: 6px;
-    height: 50px;
-`;
-
-export const HandMs = styled(Hand)`
-    width: 6px;
-    height: 60px;
 `;
 
 const tickDimensions = {
