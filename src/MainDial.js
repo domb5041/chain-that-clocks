@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import * as styled from './MainDial.styled';
+import tickData from './tickData';
 
 export default function MainDial() {
     const [london, setLondon] = useState([0, 0, 0]);
     const [paris, setParis] = useState([0, 0, 0]);
     const [tokyo, setTokyo] = useState([0, 0, 0]);
+    const [newDelhi, setNewDelhi] = useState([0, 0, 0]);
 
     useEffect(() => {
         setInterval(() => setLondon(updateHands(0)), 1000);
         setInterval(() => setParis(updateHands(1)), 1000);
         setInterval(() => setTokyo(updateHands(9)), 1000);
+        setInterval(() => setNewDelhi(updateHands(5.5)), 1000);
     }, []);
 
     const adjustForTimezone = offset => {
@@ -40,14 +43,46 @@ export default function MainDial() {
 
     return (
         <styled.MainDial>
+            {tickData.main.hours.map(deg => (
+                <styled.MainDialTick deg={deg}>
+                    <div />
+                </styled.MainDialTick>
+            ))}
+            {tickData.main.minutes.map(deg => (
+                <styled.MainDialMinTick deg={deg}>
+                    <div />
+                </styled.MainDialMinTick>
+            ))}
             <styled.SubDialA>
+                {tickData.sub.hours.map(deg => (
+                    <styled.SubDialTick deg={deg}>
+                        <div />
+                    </styled.SubDialTick>
+                ))}
                 <styled.HandHs style={transformHands(paris[0])} />
+                <styled.HandMs style={transformHands(paris[1])} />
                 <styled.CapSmall />
             </styled.SubDialA>
             <styled.SubDialB>
+                {tickData.sub.hours.map(deg => (
+                    <styled.SubDialTick deg={deg}>
+                        <div />
+                    </styled.SubDialTick>
+                ))}
                 <styled.HandHs style={transformHands(tokyo[0])} />
+                <styled.HandMs style={transformHands(tokyo[1])} />
                 <styled.CapSmall />
             </styled.SubDialB>
+            <styled.SubDialC>
+                {tickData.sub.hours.map(deg => (
+                    <styled.SubDialTick deg={deg}>
+                        <div />
+                    </styled.SubDialTick>
+                ))}
+                <styled.HandHs style={transformHands(newDelhi[0])} />
+                <styled.HandMs style={transformHands(newDelhi[1])} />
+                <styled.CapSmall />
+            </styled.SubDialC>
             <styled.HandH style={transformHands(london[0])} />
             <styled.HandM style={transformHands(london[1])} />
             <styled.HandS style={transformHands(london[2])} />
@@ -55,5 +90,3 @@ export default function MainDial() {
         </styled.MainDial>
     );
 }
-
-// style={{ transform: `translateX(-50%) rotate(${time[2]}deg)` }}

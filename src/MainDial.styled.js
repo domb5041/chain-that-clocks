@@ -9,21 +9,29 @@ export const MainDial = styled.div`
 `;
 
 export const SubDial = styled.div`
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     border-radius: 100%;
     border: 2px solid silver;
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
 `;
 
 export const SubDialA = styled(SubDial)`
     left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
 `;
 
 export const SubDialB = styled(SubDial)`
     right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+`;
+
+export const SubDialC = styled(SubDial)`
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
 `;
 
 const Hand = styled.div`
@@ -71,5 +79,55 @@ export const HandS = styled(Hand)`
 
 export const HandHs = styled(Hand)`
     width: 6px;
+    height: 50px;
+`;
+
+export const HandMs = styled(Hand)`
+    width: 6px;
     height: 60px;
+`;
+
+export const SubDialTick = styled.div`
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: center bottom;
+    width: 5px;
+    height: 90px;
+    transform: ${props => `translateX(-50%) rotate(${props.deg}deg)`};
+    & > div {
+        background-color: silver;
+        width: 100%;
+        height: 20%;
+    }
+`;
+
+export const MainDialTick = styled.div`
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: center bottom;
+    width: 7px;
+    height: 250px;
+    transform: ${props => `translateX(-50%) rotate(${props.deg}deg)`};
+    & > div {
+        background-color: silver;
+        width: 100%;
+        height: 15%;
+    }
+`;
+
+export const MainDialMinTick = styled.div`
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: center bottom;
+    width: 4px;
+    height: 250px;
+    transform: ${props => `translateX(-50%) rotate(${props.deg}deg)`};
+    & > div {
+        background-color: silver;
+        width: 100%;
+        height: 4%;
+    }
 `;
