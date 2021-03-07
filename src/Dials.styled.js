@@ -8,6 +8,7 @@ export const MainDial = styled.div`
     position: relative;
     background-image: radial-gradient(transparent, #343434);
     box-shadow: 0 0 140px #343434;
+    flex-shrink: 0;
 `;
 
 export const SubDial = styled.div`

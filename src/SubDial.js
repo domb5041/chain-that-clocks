@@ -27,11 +27,13 @@ export default function SubDial({ position, city, offset }) {
     return (
         <styled.SubDial position={position}>
             <styled.AmPm subDial>{getAmPm(offset)}</styled.AmPm>
-            <styled.Bell
-                className={alert ? 'fas fa-bell' : 'far fa-bell'}
-                alert={alert}
-                position={position}
-            />
+            {alert && (
+                <styled.Bell
+                    className='far fa-bell'
+                    alert={alert}
+                    position={position}
+                />
+            )}
             <styled.City>{city}</styled.City>
             {subTickData.map((tick, i) => (
                 <styled.Tick tick={tick} key={i}>

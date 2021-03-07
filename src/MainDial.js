@@ -27,10 +27,7 @@ export default function MainDial() {
 
     return (
         <styled.MainDial>
-            <styled.Bell
-                className={alert ? 'fas fa-bell' : 'far fa-bell'}
-                alert={alert}
-            />
+            {alert && <styled.Bell className='far fa-bell' alert={alert} />}
             <styled.AmPm>{getAmPm(0)}</styled.AmPm>
             {mainTickData.map((tick, i) => (
                 <styled.Tick tick={tick} key={i}>
