@@ -15,10 +15,7 @@ export default function MainDial() {
 
     useEffect(() => {
         setInterval(handleSetTime, 1000);
-        return () => {
-            clearInterval(alertOnTheHour);
-        };
-    }, [time]);
+    }, []);
 
     const handleSetTime = () => {
         setTime(timeToDegrees(0));

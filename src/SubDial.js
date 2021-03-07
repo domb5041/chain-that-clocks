@@ -14,10 +14,7 @@ export default function SubDial({ position, city, offset }) {
 
     useEffect(() => {
         setInterval(handleSetTime, 1000);
-        return () => {
-            clearInterval(handleSetTime);
-        };
-    }, [time]);
+    }, []);
 
     const handleSetTime = () => {
         setTime(timeToDegrees(offset));
